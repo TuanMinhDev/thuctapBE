@@ -8,8 +8,8 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 export const register = async (req: Request, res: Response) => {
     try {
-        const { email, password, name, phoneNumber, role } = req.body;
-
+        const { email, password, name, phoneNumber, role = "user" } = req.body;
+console.log("Register data:", { email, password, name, phoneNumber, role });
         if (!email || !password || !name  || !phoneNumber) {
             return res.status(400).json({ message: "Chưa nhập đầy đủ dữ liệu" });
         }
